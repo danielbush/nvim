@@ -28,7 +28,8 @@ end
 
 local function fuzzy_search_action_items()
   -- search_utils.fuzzy_search_pattern('^#.*CONCERNS .*$', 'Select action items', 'Select action items', false)
-  search_utils.fuzzy_search_pattern('^ *- [', 'Select action items', 'Select action items', false)
+  -- search_utils.fuzzy_search_pattern('^ *- \\[', 'Select action items', 'Select action items', false)
+  search_utils.fuzzy_search_pattern('^#.*_HAT', 'Select action items', 'Select action items', true)
 end
 
 local function fuzzy_search_headings()
@@ -237,7 +238,7 @@ local function apply_custom_syntax()
   vim.cmd [[syntax match markdownITerm /\<i:[A-Za-z0-9_]\+\>/]]
   vim.cmd [[syntax match markdownRTerm /\<r:[A-Za-z0-9_]\+\>/]]
   vim.cmd [[syntax match markdownHatTerm /\<r:[A-Za-z0-9_]\+_HAT\>/]]
-  vim.cmd [[syntax match markdownTrailingXHistogram /[Xx_]\+$/]]
+  vim.cmd [[syntax match markdownTrailingXHistogram /[ |][#Xx_]\+$/]]
 
   print 'Applied custom i: and r: syntax highlighting'
 end
@@ -348,7 +349,8 @@ vim.keymap.set('n', '<localleader>fa', fuzzy_search_action_items, { desc = 'Sear
 vim.keymap.set('n', '<localleader>ii', fuzzy_insert_i_identifiers, { desc = 'Insert r: identifiers' })
 
 -- action items
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>ga', '/#.*r:ACTION_ITEMS\\|#.*.:PLANNER<CR>zv', { noremap = true, silent = true, desc = 'Jump action items' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>ga', '/#.*:*ACTION_ITEMS<CR>zv', { noremap = true, silent = true, desc = 'Jump action items' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gs', '/#.*:*STRATEGIC<CR>zv', { noremap = true, silent = true, desc = 'Jump strategic items' })
 -- vim.keymap.set('n', '<localleader>a', fuzzy_search_action_items, { desc = 'Search action items' })
 
 -- vim.keymap.set('n', '<leader>fp', function()

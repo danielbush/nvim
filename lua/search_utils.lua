@@ -346,4 +346,3 @@ function M.live_multiword_search()
 end
 
 return M
-
