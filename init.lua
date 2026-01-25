@@ -1032,6 +1032,8 @@ require('lazy').setup({
 -- My modifications
 
 vim.g.markdown_folding = 1
+vim.opt_local.foldlevelstart = 99  -- Start with all folds open
+
 -- 2 spaces for markdown
 vim.cmd 'autocmd FileType markdown setlocal shiftwidth=2 softtabstop=2 expandtab'
 
