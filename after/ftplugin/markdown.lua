@@ -244,6 +244,10 @@ local function apply_custom_syntax()
     vim.fn.matchadd('markdownRTerm', [[\<r:[A-Za-z0-9_]\+\>]])
     vim.fn.matchadd('markdownHatTerm', [[\<r:[A-Za-z0-9_]\+_HAT\>]])
     vim.fn.matchadd('markdownTrailingXHistogram', [=[[| ][#Xx_]\+$]=])
+    vim.fn.matchadd('markdownCheckedBox', [=[\[x\]]=])
+    vim.fn.matchadd('markdownPendingBox', [=[\[\.\]]=])
+    vim.fn.matchadd('markdownAlertBox', [=[\[!\]]=])
+    vim.fn.matchadd('markdownUncheckedBox', [=[\[ \]]=])
 
     print 'Applied custom i: and r: syntax highlighting'
 end
@@ -284,6 +288,22 @@ vim.api.nvim_set_hl(0, 'markdownTrailingXHistogram', {
     ctermfg = 'yellow',
     fg = '#bbcc55',
     bold = true,
+})
+vim.api.nvim_set_hl(0, 'markdownCheckedBox', {
+    ctermfg = 'green',
+    fg = '#a6e3a1',
+})
+vim.api.nvim_set_hl(0, 'markdownPendingBox', {
+    ctermfg = 'yellow',
+    fg = '#f9e2af',
+})
+vim.api.nvim_set_hl(0, 'markdownAlertBox', {
+    ctermfg = 'red',
+    fg = '#f38ba8',
+    bold = true,
+})
+vim.api.nvim_set_hl(0, 'markdownUncheckedBox', {
+    fg = '#7f849c',
 })
 
 --
