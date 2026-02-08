@@ -1,3 +1,40 @@
+--[[
+markdown highlighting - Feb-2026
+
+**Three layers are active simultaneously:**
+
+1. **Treesitter** — the primary highlighter for markdown. It handles headings,
+emphasis, bold, code blocks, links, list markers, etc. Your config has
+`highlight = { enable = true }` with markdown/markdown_inline parsers installed,
+and markdown is NOT in `additional_vim_regex_highlighting`, so treesitter is
+meant to be the sole syntax highlighter.
+
+2. **Vim's built-in markdown syntax rules** — these are *also* partially active,
+despite treesitter being enabled. This is because your `apply_custom_syntax()`
+injects `syntax match` commands (well, it used to — now it's just the `syntax
+clear markdownError`), and the ftplugin loading process also loads vim's runtime
+`syntax/markdown.vim`. That's why we saw things like `markdownH1`, `markdownH2`,
+`markdownListMarker`, and `markdownError` in the syntax stack during
+investigation. Treesitter generally takes priority over these, but the vim
+syntax rules are still lurking underneath — they show through wherever
+treesitter doesn't have a capture (like the `_` in `FOO_BAR`).
+
+3. **`matchadd` window matches** — your custom layer. These operate
+independently of both treesitter and vim syntax. They highlight `i:TERM`,
+`r:TERM`, `ALL_CAPS`, `_HAT` terms, checkbox markers, and trailing histograms.
+`matchadd` draws on top of everything else.
+
+**Priority order (highest wins):**
+- `matchadd` matches (window-level, drawn last)
+- vim `syntax match` rules (when treesitter has no capture at that position)
+- treesitter captures (the main highlighter)
+
+So in practice: treesitter colors most of your text, vim syntax occasionally
+bleeds through (like `markdownError` did on underscores), and your `matchadd`
+patterns paint over the top for your custom terms.
+
+]]
+
 local search_utils = require 'search_utils'
 
 -- Create user commands
