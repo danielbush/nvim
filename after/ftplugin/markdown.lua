@@ -234,12 +234,16 @@ end
 -- vim.cmd 'syntax match markdownRTerm /\\<r:[A-Za-z0-9_]\\+\\>/'
 
 -- Function to apply custom syntax highlighting
+-- Uses matchadd (window-level) instead of syntax match to avoid conflicts with treesitter
 local function apply_custom_syntax()
-    vim.cmd [[syntax match markdownAllCapsTerm /\<[A-Z0-9_]\+[A-Z]*[A-Z0-9_]\+\>/]]
-    vim.cmd [[syntax match markdownITerm /\<i:[A-Za-z0-9_]\+\>/]]
-    vim.cmd [[syntax match markdownRTerm /\<r:[A-Za-z0-9_]\+\>/]]
-    vim.cmd [[syntax match markdownHatTerm /\<r:[A-Za-z0-9_]\+_HAT\>/]]
-    vim.cmd [[syntax match markdownTrailingXHistogram /[ |][#Xx_]\+$/]]
+    -- Clear previous matches to avoid duplicates
+    pcall(vim.fn.clearmatches)
+
+    vim.fn.matchadd('markdownAllCapsTerm', [[\<[A-Z0-9_]\+[A-Z]*[A-Z0-9_]\+\>]])
+    vim.fn.matchadd('markdownITerm', [[\<i:[A-Za-z0-9_]\+\>]])
+    vim.fn.matchadd('markdownRTerm', [[\<r:[A-Za-z0-9_]\+\>]])
+    vim.fn.matchadd('markdownHatTerm', [[\<r:[A-Za-z0-9_]\+_HAT\>]])
+    vim.fn.matchadd('markdownTrailingXHistogram', [=[[| ][#Xx_]\+$]=])
 
     print 'Applied custom i: and r: syntax highlighting'
 end
