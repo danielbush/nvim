@@ -239,6 +239,10 @@ local function apply_custom_syntax()
     -- Clear previous matches to avoid duplicates
     pcall(vim.fn.clearmatches)
 
+    -- Disable vim's built-in markdownError (flags lone underscores as errors)
+    -- Leads to orange underscores.
+    vim.cmd [[silent! syntax clear markdownError]]
+
     vim.fn.matchadd('markdownAllCapsTerm', [[\<[A-Z0-9_]\+[A-Z]*[A-Z0-9_]\+\>]])
     vim.fn.matchadd('markdownITerm', [[\<i:[A-Za-z0-9_]\+\>]])
     vim.fn.matchadd('markdownRTerm', [[\<r:[A-Za-z0-9_]\+\>]])
