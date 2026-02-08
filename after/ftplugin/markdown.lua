@@ -364,12 +364,23 @@ vim.api.nvim_create_autocmd('VimEnter', {
     end,
 })
 
--- Also apply when opening new markdown buffers
+-- Also apply when opening new markdown buffers or entering new windows
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufEnter' }, {
     group = augroup,
     pattern = '*.md',
     callback = function()
-        vim.defer_fn(apply_custom_syntax, 100) -- 100ms delay
+        vim.defer_fn(apply_custom_syntax, 100)
+    end,
+})
+
+-- Ensures custom syntax is applied when doing split, vsplit because matchadd is
+-- window-scoped.
+vim.api.nvim_create_autocmd('WinEnter', {
+    group = augroup,
+    callback = function()
+        if vim.bo.filetype == 'markdown' and #vim.fn.getmatches() == 0 then
+            apply_custom_syntax()
+        end
     end,
 })
 
