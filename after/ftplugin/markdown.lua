@@ -289,6 +289,8 @@ local function apply_custom_syntax()
     vim.fn.matchadd('markdownPendingBox', [=[\[\.\]]=])
     vim.fn.matchadd('markdownAlertBox', [=[\[!\]]=])
     vim.fn.matchadd('markdownUncheckedBox', [=[\[ \]]=])
+    vim.fn.matchadd('markdownOutcomeTerm', [[\<OUTCOME\>]])
+    vim.fn.matchadd('markdownMilestoneTerm', [[\<MILESTONE\>]])
 
     print 'Applied custom i: and r: syntax highlighting'
 end
@@ -346,6 +348,15 @@ vim.api.nvim_set_hl(0, 'markdownAlertBox', {
 vim.api.nvim_set_hl(0, 'markdownUncheckedBox', {
     fg = '#7f849c',
 })
+vim.api.nvim_set_hl(0, 'markdownOutcomeTerm', {
+    ctermfg = 'yellow',
+    fg = '#f9e2af',
+    bold = true,
+})
+vim.api.nvim_set_hl(0, 'markdownMilestoneTerm', {
+    fg = '#fab387',
+    bold = true,
+})
 
 --
 -- This appears to work to autoload:
@@ -388,8 +399,6 @@ vim.api.nvim_create_autocmd('WinEnter', {
 -- vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>,', 'zmzr', { noremap = true, silent = true, desc = 'Collapse level3+' })
 
 -- the g's
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gf', '/[ir]:FUN_PROG<CR>zv',
-    { noremap = true, silent = true, desc = 'FUN_PROG' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gh', '/^#.*<CR>zv',
     { noremap = true, silent = true, desc = 'Jump headings' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g1', '/^# <CR>zv',
