@@ -433,6 +433,12 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gr', 'yiw/[ir]:<C-R>"<CR>zv',
     { noremap = true, silent = true, desc = 'Jump selected i/r-alias' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gn', '/[ir]:[A-Za-z0-9_]\\+<CR>zv',
     { noremap = true, silent = true, desc = 'Jump next i/r-alias' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gb', '/^- <CR>zv',
+    { noremap = true, silent = true, desc = 'Jump next top-level bullet' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>go', '/OUTCOME<CR>zv',
+    { noremap = true, silent = true, desc = 'Jump next OUTCOME' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gO', '/OUTCOME\\|MILESTONE<CR>zv',
+    { noremap = true, silent = true, desc = 'Jump next OUTCOME or MILESTONE' })
 
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>r', 'zrzv', { noremap = true, silent = true, desc = 'Unfold more' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>m', 'zmzv', { noremap = true, silent = true, desc = 'Fold more' })
