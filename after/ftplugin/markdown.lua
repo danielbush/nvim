@@ -290,7 +290,9 @@ local function apply_custom_syntax()
     vim.fn.matchadd('markdownAlertBox', [=[\[!\]]=])
     vim.fn.matchadd('markdownUncheckedBox', [=[\[ \]]=])
     vim.fn.matchadd('markdownOutcomeTerm', [[\<OUTCOME\>]])
+    vim.fn.matchadd('markdownOutcomeLine', [[.*\<OUTCOME\>.*]], 1) -- priority 1: below default (10)
     vim.fn.matchadd('markdownMilestoneTerm', [[\<MILESTONE\>]])
+    vim.fn.matchadd('markdownMilestoneLine', [[.*\<MILESTONE\>.*]], 1)
 
     print 'Applied custom i: and r: syntax highlighting'
 end
@@ -356,6 +358,12 @@ vim.api.nvim_set_hl(0, 'markdownOutcomeTerm', {
 vim.api.nvim_set_hl(0, 'markdownMilestoneTerm', {
     fg = '#fab387',
     bold = true,
+})
+vim.api.nvim_set_hl(0, 'markdownOutcomeLine', {
+    bg = '#2b2b38',
+})
+vim.api.nvim_set_hl(0, 'markdownMilestoneLine', {
+    bg = '#302b38',
 })
 
 --
