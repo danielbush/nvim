@@ -354,6 +354,7 @@ vim.api.nvim_set_hl(0, 'markdownOutcomeTerm', {
     ctermfg = 'yellow',
     fg = '#f9e2af',
     bold = true,
+    underline = true,
 })
 vim.api.nvim_set_hl(0, 'markdownMilestoneTerm', {
     fg = '#fab387',
