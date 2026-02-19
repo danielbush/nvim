@@ -363,7 +363,7 @@ vim.api.nvim_set_hl(0, 'markdownOutcomeTerm', {
     underline = true,
 })
 vim.api.nvim_set_hl(0, 'markdownMilestoneTerm', {
-    fg = '#fab387',
+    fg = '#36b179',
     bold = true,
 })
 vim.api.nvim_set_hl(0, 'markdownOutcomeLine', {
