@@ -438,10 +438,14 @@ vim.api.nvim_buf_set_keymap(
 )
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gH', '/# i:\\S\\+_HAT\\><CR>zv',
     { noremap = true, silent = true, desc = 'Jump hats' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gX', '/^- <CR>zv',
-    { noremap = true, silent = true, desc = 'Jump checkboxes' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gx', '/- \\[.\\]<CR>zv',
-    { noremap = true, silent = true, desc = 'Jump checkboxes' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gx,', '/^- \\[.\\]<CR>zv',
+    { noremap = true, silent = true, desc = 'Jump all main checkboxes' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gxx', '/^- \\[x\\]<CR>zv',
+    { noremap = true, silent = true, desc = 'Jump completed checkboxes' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gx.', '/^- \\[\\.\\]<CR>zv',
+    { noremap = true, silent = true, desc = 'Jump in-progress checkboxes' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gxa', '/- \\[.\\]<CR>zv',
+    { noremap = true, silent = true, desc = 'Jump all checkboxes recursively' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gi', 'yiw/i:<C-R>"\\><CR>zv',
     { noremap = true, silent = true, desc = 'Jump to i-alias' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gr', 'yiw/[ir]:<C-R>"<CR>zv',
@@ -450,8 +454,12 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gn', '/[ir]:[A-Za-z0-9_]\\+<CR
     { noremap = true, silent = true, desc = 'Jump next i/r-alias' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gb', '/^- <CR>zv',
     { noremap = true, silent = true, desc = 'Jump next top-level bullet' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>go', '/OUTCOME<CR>zv',
-    { noremap = true, silent = true, desc = 'Jump next OUTCOME' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>go.', '/\\[\\.\\].*OUTCOME<CR>zv',
+    { noremap = true, silent = true, desc = 'Jump next [.] OUTCOME' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gox', '/\\[x\\].*OUTCOME\\|\\[!\\].*OUTCOME<CR>zv',
+    { noremap = true, silent = true, desc = 'Jump next [x]/[!] OUTCOME' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>goo', '/\\[ \\].*OUTCOME\\|\\[?\\].*OUTCOME<CR>zv',
+    { noremap = true, silent = true, desc = 'Jump next [ ]/[?] OUTCOME' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gO', '/OUTCOME\\|MILESTONE<CR>zv',
     { noremap = true, silent = true, desc = 'Jump next OUTCOME or MILESTONE' })
 
