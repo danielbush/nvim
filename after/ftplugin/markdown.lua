@@ -292,6 +292,7 @@ local function apply_custom_syntax()
     vim.fn.matchadd('markdownUncheckedBox', [=[\[ \]]=])
     vim.fn.matchadd('markdownOtherBox', [=[\[[^ x.!]\]]=])
     vim.fn.matchadd('markdownOutcomeTerm', [[\<OUTCOME\>]])
+    vim.fn.matchadd('markdownSuperOutcomeTerm', [[\<SUPEROUTCOME\>]])
     vim.fn.matchadd('markdownOutcomeLine', [[.*\<OUTCOME\>.*]], 1) -- priority 1: below default (10)
     vim.fn.matchadd('markdownMilestoneTerm', [[\<MILESTONE\>]])
     vim.fn.matchadd('markdownMilestoneLine', [[.*\<MILESTONE\>.*]], 1)
@@ -362,6 +363,11 @@ vim.api.nvim_set_hl(0, 'markdownOutcomeTerm', {
     fg = '#f9e2af',
     bold = true,
     underline = true,
+})
+vim.api.nvim_set_hl(0, 'markdownSuperOutcomeTerm', {
+    fg = '#f9e2af',
+    bold = true,
+    reverse = true,
 })
 vim.api.nvim_set_hl(0, 'markdownMilestoneTerm', {
     fg = '#36b179',
