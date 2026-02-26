@@ -285,7 +285,7 @@ local function apply_custom_syntax()
     vim.fn.matchadd('markdownRTerm', [[\<r:[A-Za-z0-9_]\+\>]])
     vim.fn.matchadd('markdownHatTerm', [[\<r:[A-Za-z0-9_]\+_HAT\>]])
     -- \zs = match reset
-    vim.fn.matchadd('markdownTrailingXHistogram', [=[[| ]\zs[#Xx_ ]\+$]=])
+    vim.fn.matchadd('markdownTrailingXHistogram', [=[[| ]\zs[#Xx_. ]\+$]=])
     vim.fn.matchadd('markdownCheckedBox', [=[\[x\]]=])
     vim.fn.matchadd('markdownPendingBox', [=[\[\.\]]=])
     vim.fn.matchadd('markdownAlertBox', [=[\[!\]]=])
