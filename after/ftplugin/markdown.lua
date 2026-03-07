@@ -461,13 +461,14 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gn', '/[ir]:[A-Za-z0-9_]\\+<CR
     { noremap = true, silent = true, desc = 'Jump next i/r-alias' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gb', '/^- <CR>zv',
     { noremap = true, silent = true, desc = 'Jump next top-level bullet' })
+-- jumping OUTCOME's
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gO', '/\\[ \\].*OUTCOME\\|\\[?\\].*OUTCOME<CR>zv',
+    { noremap = true, silent = true, desc = 'Jump next [ ]/[?] OUTCOME' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>go.', '/\\[\\.\\].*OUTCOME<CR>zv',
     { noremap = true, silent = true, desc = 'Jump next [.] OUTCOME' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gox', '/\\[x\\].*OUTCOME\\|\\[!\\].*OUTCOME<CR>zv',
     { noremap = true, silent = true, desc = 'Jump next [x]/[!] OUTCOME' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>goo', '/\\[ \\].*OUTCOME\\|\\[?\\].*OUTCOME<CR>zv',
-    { noremap = true, silent = true, desc = 'Jump next [ ]/[?] OUTCOME' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gO', '/OUTCOME\\|MILESTONE<CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gom', '/OUTCOME\\|MILESTONE<CR>zv',
     { noremap = true, silent = true, desc = 'Jump next OUTCOME or MILESTONE' })
 
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>r', 'zrzv', { noremap = true, silent = true, desc = 'Unfold more' })
@@ -488,7 +489,7 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gt', '/#.*:*TIME_CENTERS<CR>zv
     { noremap = true, silent = true, desc = 'Jump action items' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>ga', '/#.*:*ACTION_ITEMS<CR>zv',
     { noremap = true, silent = true, desc = 'Jump action items' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gs', '/#.*:*STRATEGIC<CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gs', '/#.*:*STRATEGIC\\|#.*:*ACTION_ITEMS<CR>zv',
     { noremap = true, silent = true, desc = 'Jump strategic items' })
 -- vim.keymap.set('n', '<localleader>a', fuzzy_search_action_items, { desc = 'Search action items' })
 
