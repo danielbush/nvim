@@ -296,7 +296,7 @@ local function apply_custom_syntax()
     vim.fn.matchadd('markdownOutcomeLine', [[.*\<OUTCOME\>.*]], 1) -- priority 1: below default (10)
     vim.fn.matchadd('markdownMilestoneTerm', [[\<MILESTONE\>]])
     vim.fn.matchadd('markdownMilestoneLine', [[.*\<MILESTONE\>.*]], 1)
-    vim.fn.matchadd('markdownTimeTerm', [[\<r:\(BEFORE\|AFTER\|AGENT\|SAT\|SUN\)_TIME_[0-9]\>]])
+    vim.fn.matchadd('markdownTimeTerm', [[\<r:\(MID_WEEK\|BEFORE\|AFTER\|AGENT\|SAT\|SUN\)_TIME[_0-9]*\>]])
 
     print 'Applied custom i: and r: syntax highlighting'
 end
@@ -459,10 +459,13 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gx.', '/^- \\[\\.\\]<CR>zv',
     { noremap = true, silent = true, desc = 'Jump in-progress checkboxes' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gxa', '/- \\[.\\]<CR>zv',
     { noremap = true, silent = true, desc = 'Jump all checkboxes recursively' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gi', 'yiw/i:<C-R>"\\><CR>zv',
+-- "zyiw = yanks go to z register and don't affect "p" command.
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gi', '"zyiw/i:<C-R>z\\><CR>zv',
     { noremap = true, silent = true, desc = 'Jump to i-alias' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gr', 'yiw/[ir]:<C-R>"<CR>zv',
-    { noremap = true, silent = true, desc = 'Jump selected i/r-alias' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gr', '"zyiw/r:<C-R>z<CR>zv',
+    { noremap = true, silent = true, desc = 'Jump selected r-alias' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gI', '"zyiw/[ir]:<C-R>z<CR>zv',
+    { noremap = true, silent = true, desc = 'Jump selected r-alias' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gn', '/[ir]:[A-Za-z0-9_]\\+<CR>zv',
     { noremap = true, silent = true, desc = 'Jump next i/r-alias' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gb', '/^- <CR>zv',
