@@ -296,6 +296,7 @@ local function apply_custom_syntax()
     vim.fn.matchadd('markdownOutcomeLine', [[.*\<OUTCOME\>.*]], 1) -- priority 1: below default (10)
     vim.fn.matchadd('markdownMilestoneTerm', [[\<MILESTONE\>]])
     vim.fn.matchadd('markdownMilestoneLine', [[.*\<MILESTONE\>.*]], 1)
+    vim.fn.matchadd('markdownTimeTerm', [[\<r:\(BEFORE\|AFTER\|AGENT\|SAT\|SUN\)_TIME_[0-9]\>]])
 
     print 'Applied custom i: and r: syntax highlighting'
 end
@@ -378,6 +379,11 @@ vim.api.nvim_set_hl(0, 'markdownOutcomeLine', {
 })
 vim.api.nvim_set_hl(0, 'markdownMilestoneLine', {
     bg = '#302b38',
+})
+vim.api.nvim_set_hl(0, 'markdownTimeTerm', {
+    ctermfg = 'red',
+    fg = '#e06060',
+    bold = true,
 })
 
 --
