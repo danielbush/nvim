@@ -427,59 +427,57 @@ vim.api.nvim_create_autocmd('WinEnter', {
 -- vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>,', 'zmzr', { noremap = true, silent = true, desc = 'Collapse level3+' })
 
 -- the g's
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gh', '/^#.*<CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gh', '/^#.*<CR>',
     { noremap = true, silent = true, desc = 'Jump headings' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g1', '/^# <CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g1', '/^# <CR>',
     { noremap = true, silent = true, desc = 'Jump headings' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g2', '/^#\\{1,2\\} <CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g2', '/^#\\{1,2\\} <CR>',
     { noremap = true, silent = true, desc = 'Jump headings' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g3', '/^#\\{1,3\\} <CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g3', '/^#\\{1,3\\} <CR>',
     { noremap = true, silent = true, desc = 'Jump headings' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g4', '/^#\\{1,4\\} <CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g4', '/^#\\{1,4\\} <CR>',
     { noremap = true, silent = true, desc = 'Jump headings' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g5', '/^#\\{1,5\\} <CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g5', '/^#\\{1,5\\} <CR>',
     { noremap = true, silent = true, desc = 'Jump headings' })
--- vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g1', '/^# .*<CR>zv', { noremap = true, silent = true, desc = 'Jump level 1 headings' })
--- vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g1', '/^- .*$<CR>zv', { noremap = true, silent = true, desc = 'Jump level 1 headings' })
--- vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>g1', '/^- <CR>zv', { noremap = true, silent = true, desc = 'Jump level 1 headings' })
-vim.api.nvim_buf_set_keymap(
-    0,
-    'n',
-    '<localleader>gt',
-    '/#.*r:TARGETS\\|^r:TARGETS\\|#.*[ir]:[A-Z]\\+_TARGETS<CR>zv',
-    { noremap = true, silent = true, desc = 'Jump targets!' }
-)
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gH', '/# i:\\S\\+_HAT\\><CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gt', '/#.*:*TIME_CENTERS<CR>',
+    { noremap = true, silent = true, desc = 'Jump action items' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>ga', '/#.*:*ACTION_ITEMS<CR>',
+    { noremap = true, silent = true, desc = 'Jump action items' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gs', '/#.*:*STRATEGIC\\|#.*:*ACTION_ITEMS<CR>',
+    { noremap = true, silent = true, desc = 'Jump strategic items' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gH', '/# i:\\S\\+_HAT\\><CR>',
     { noremap = true, silent = true, desc = 'Jump hats' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gx,', '/^- \\[.\\]<CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gx,', '/^- \\[.\\]<CR>',
     { noremap = true, silent = true, desc = 'Jump all main checkboxes' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gxx', '/^- \\[x\\]<CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gxx', '/^- \\[x\\]<CR>',
     { noremap = true, silent = true, desc = 'Jump completed checkboxes' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gx.', '/^- \\[\\.\\]<CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gx.', '/^- \\[\\.\\]<CR>',
     { noremap = true, silent = true, desc = 'Jump in-progress checkboxes' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gxa', '/- \\[.\\]<CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gxa', '/- \\[.\\]<CR>',
     { noremap = true, silent = true, desc = 'Jump all checkboxes recursively' })
--- "zyiw = yanks go to z register and don't affect "p" command.
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gi', '"zyiw/i:<C-R>z\\><CR>zv',
-    { noremap = true, silent = true, desc = 'Jump to i-alias' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gr', '"zyiw/r:<C-R>z<CR>zv',
-    { noremap = true, silent = true, desc = 'Jump selected r-alias' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gI', '"zyiw/[ir]:<C-R>z<CR>zv',
-    { noremap = true, silent = true, desc = 'Jump selected r-alias' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gn', '/[ir]:[A-Za-z0-9_]\\+<CR>zv',
-    { noremap = true, silent = true, desc = 'Jump next i/r-alias' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gb', '/^- <CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gb', '/^- <CR>',
     { noremap = true, silent = true, desc = 'Jump next top-level bullet' })
+-- "zyiw = yanks go to z register and don't affect "p" command.
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gi', '"zyiw/i:<C-R>z\\><CR>',
+    { noremap = true, silent = true, desc = 'Jump to i-alias' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gr', '"zyiw/r:<C-R>z<CR>',
+    { noremap = true, silent = true, desc = 'Jump selected r-alias' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gI', '"zyiw/[ir]:<C-R>z<CR>',
+    { noremap = true, silent = true, desc = 'Jump selected r-alias' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gn', '/[ir]:[A-Za-z0-9_]\\+<CR>',
+    { noremap = true, silent = true, desc = 'Jump next i/r-alias' })
 -- jumping OUTCOME's
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gO', '/\\[ \\].*OUTCOME\\|\\[?\\].*OUTCOME<CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gO', '/\\[ \\].*OUTCOME\\|\\[?\\].*OUTCOME<CR>',
     { noremap = true, silent = true, desc = 'Jump next [ ]/[?] OUTCOME' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>go.', '/\\[\\.\\].*OUTCOME<CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>go.', '/\\[\\.\\].*OUTCOME<CR>',
     { noremap = true, silent = true, desc = 'Jump next [.] OUTCOME' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gox', '/\\[x\\].*OUTCOME\\|\\[!\\].*OUTCOME<CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gox', '/\\[x\\].*OUTCOME\\|\\[!\\].*OUTCOME<CR>',
     { noremap = true, silent = true, desc = 'Jump next [x]/[!] OUTCOME' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gom', '/OUTCOME\\|MILESTONE<CR>zv',
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gom', '/OUTCOME\\|MILESTONE<CR>',
     { noremap = true, silent = true, desc = 'Jump next OUTCOME or MILESTONE' })
+-- vim.keymap.set('n', '<localleader>a', fuzzy_search_action_items, { desc = 'Search action items' })
 
+-- folding
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>r', 'zrzv', { noremap = true, silent = true, desc = 'Unfold more' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>m', 'zmzv', { noremap = true, silent = true, desc = 'Fold more' })
 
@@ -493,14 +491,6 @@ vim.keymap.set('n', '<localleader>fh', fuzzy_search_headings, { desc = 'Search h
 vim.keymap.set('n', '<localleader>fa', fuzzy_search_action_items, { desc = 'Search action items' })
 vim.keymap.set('n', '<localleader>ii', fuzzy_insert_i_identifiers, { desc = 'Insert r: identifiers' })
 
--- action items
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gt', '/#.*:*TIME_CENTERS<CR>zv',
-    { noremap = true, silent = true, desc = 'Jump action items' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>ga', '/#.*:*ACTION_ITEMS<CR>zv',
-    { noremap = true, silent = true, desc = 'Jump action items' })
-vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gs', '/#.*:*STRATEGIC\\|#.*:*ACTION_ITEMS<CR>zv',
-    { noremap = true, silent = true, desc = 'Jump strategic items' })
--- vim.keymap.set('n', '<localleader>a', fuzzy_search_action_items, { desc = 'Search action items' })
 
 -- vim.keymap.set('n', '<leader>fp', function()
 --   vim.ui.input({ prompt = 'Pattern: ' }, function(pattern)
