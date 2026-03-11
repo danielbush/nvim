@@ -471,6 +471,8 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gO', '/\\[ \\].*OUTCOME\\|\\[?
     { noremap = true, silent = true, desc = 'Jump next [ ]/[?] OUTCOME' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>go.', '/\\[\\.\\].*OUTCOME<CR>',
     { noremap = true, silent = true, desc = 'Jump next [.] OUTCOME' })
+vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>goa', '/\\[.\\].*OUTCOME<CR>',
+    { noremap = true, silent = true, desc = 'Jump next [*] OUTCOME' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gox', '/\\[x\\].*OUTCOME\\|\\[!\\].*OUTCOME<CR>',
     { noremap = true, silent = true, desc = 'Jump next [x]/[!] OUTCOME' })
 vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>gom', '/OUTCOME\\|MILESTONE<CR>',
